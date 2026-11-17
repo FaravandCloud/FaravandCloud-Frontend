@@ -51,8 +51,8 @@ export const site = {
 
   seo: {
     title: {
-      fa: 'فراوند | پردازش هوشمند فراوند: فراتر از پردازش',
-      en: 'Faravand | Faravand Intelligent Processing: Beyond processing',
+      fa: 'پردازش هوشمند فراوند | فراتر از پردازش',
+      en: 'Faravand Intelligent Processing | Beyond processing',
     },
     description: {
       fa: 'فراوند (پردازش هوشمند فراوند) شرکت نرم‌افزاری ایرانی است که محصولات نرم‌افزاری هوشمند برای سازمان‌ها می‌سازد؛ محصول نخست آن تروفلو، پلتفرم مدیریت عملکرد است.',
@@ -92,7 +92,7 @@ export const site = {
   },
 
   hero: {
-    eyebrow: { fa: 'شرکت نرم‌افزاری ایرانی', en: 'Iranian software company' },
+    eyebrow: { fa: 'شرکت پردازش هوشمند فراوند', en: 'Faravand Intelligent Processing' },
     lines: {
       fa: ['فراتر', 'از پردازش'],
       en: ['Beyond', 'processing'],
