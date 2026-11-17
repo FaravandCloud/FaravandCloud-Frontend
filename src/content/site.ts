@@ -2,8 +2,8 @@
  * All site content lives here: copy (fa + en), links and contact details.
  * Components only render what is defined in this file.
  *
- * !! PLACEHOLDERS !!  `domain`, `email` and the `social` handle below are
- * placeholders until the real ones exist. Change them here only.
+ * The domain is final (faravandtech.ir). The `email` mailbox and the social
+ * accounts under `handle` still have to be created; change them here only.
  *
  * To add a project, add one more object to `projects.items`: the layout adapts.
  */
@@ -33,12 +33,12 @@ export interface SocialLink {
   href: string
 }
 
-const handle = 'faravand' // PLACEHOLDER
+const handle = 'faravandtech'
 
 export const site = {
-  // ---- PLACEHOLDERS -------------------------------------------------------
-  domain: 'faravand.ir',
-  email: 'info@faravand.ir',
+  // ---- Contact (email + social accounts not created yet) -------------------
+  domain: 'faravandtech.ir',
+  email: 'info@faravandtech.ir',
   handle,
   social: [
     { label: 'LinkedIn', href: `https://www.linkedin.com/company/${handle}` },

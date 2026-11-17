@@ -47,7 +47,7 @@ npm run lint       # oxlint
 
 - `npm run build` سه کار می‌کند: `vite build` (کلاینت)، `vite build --ssr` (ورودی سرور `src/entry-server.ts`) و `scripts/prerender.mjs` که با `renderToString` دو صفحه‌ی HTML کامل می‌نویسد، همراه با `sitemap.xml` و `robots.txt`. نیازی به مرورگر یا Playwright نیست و روی Vercel کار می‌کند.
 - دو نشانی: فارسی `/` (`lang="fa" dir="rtl"`) و انگلیسی `/en/` (`lang="en" dir="ltr"`). زبان از روی نشانی تعیین می‌شود و دکمه‌ی زبان بین این دو جابه‌جا می‌شود.
-- آدرس سایت فقط از یک‌جا خوانده می‌شود: متغیر محیطی `VITE_SITE_URL` (پیش‌فرض `https://faravand.ir`). همه‌ی canonical، hreflang، OG، JSON-LD و sitemap از آن ساخته می‌شوند.
+- آدرس سایت فقط از یک‌جا خوانده می‌شود: متغیر محیطی `VITE_SITE_URL` (پیش‌فرض `https://faravandtech.ir`). همه‌ی canonical، hreflang، OG، JSON-LD و sitemap از آن ساخته می‌شوند.
 - عنوان و توضیح هر زبان: `site.seo` در `src/content/site.ts`. تگ‌های head: `src/seo.ts`.
 - `sameAs` در JSON-LD عمداً خالی است چون لینک‌های اجتماعی placeholder هستند؛ بعد از ساخت حساب‌های واقعی به `src/seo.ts` اضافه کنید.
 - فونت فارسی Dana از `public/fonts/dana/` (self-hosted).
