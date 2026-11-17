@@ -1,53 +1,33 @@
-# فراوند (Faravand): وب‌سایت شرکتی
+# Faravand website
 
-صفحه‌ی معرفی شرکت «پردازش هوشمند فراوند». React + TypeScript + Vite، Tailwind CSS v4، `motion` برای انیمیشن و `lenis` برای اسکرول نرم. دو‌زبانه (فارسی پیش‌فرض و انگلیسی).
+The company website of Faravand Intelligent Processing: a single landing page in Persian and English that introduces the company, what it works on, and its products.
 
-## اجرا
+- Persian: https://faravandtech.ir
+- English: https://faravandtech.ir/en/
+
+## Run it locally
 
 ```bash
 npm install
-npm run dev        # توسعه
-npm run build      # ساخت + پیش‌رندر HTML استاتیک (dist/index.html و dist/en/index.html)
-npm run preview    # پیش‌نمایش نسخه‌ی ساخته‌شده
-npm run lint       # oxlint
+npm run dev
 ```
 
-## استقرار روی Vercel
+To create the production version, run `npm run build`. The result is placed in the `dist` folder.
 
-پروژه یک اپ استاتیک Vite است. ریپو را به Vercel وصل کنید؛ تنظیمات به‌صورت خودکار شناسایی می‌شود (Build: `npm run build`، Output: `dist`). فایل `vercel.json` فقط کش بلندمدت برای `/assets/` را تنظیم می‌کند. دامنه‌ی `faravand.ir` را از بخش Domains اضافه کنید.
+## Deploy
 
-## ویرایش محتوا
+Connect this repository to Vercel and deploy with the default settings, then add the `faravandtech.ir` domain in the project's Domains page.
 
-همه‌ی متن‌ها (فارسی و انگلیسی)، ایمیل، دامنه، شبکه‌های اجتماعی، پروژه‌ها و اعضای تیم فقط در یک فایل هستند:
+## Edit the content
 
-`src/content/site.ts`
+All text in both languages, the contact details, social links and the product list live in one file: `src/content/site.ts`. Change it there and the whole site follows.
 
-- مقادیر **placeholder** (`domain`, `email`, `handle`, لینک‌های social) بالای فایل علامت‌گذاری شده‌اند و باید با مقدار واقعی عوض شوند.
-- افزودن پروژه: یک آبجکت به `projects.items` اضافه کنید.
-- عنوان و توضیح صفحه و تگ‌های OG در `index.html` هستند. تصویر اشتراک‌گذاری: `public/og.png` (۱۲۰۰×۶۳۰).
+The image shown when the site is shared in a chat or on social media is `public/og.png`.
 
-## لوگو و فونت
+## Brand assets
 
-- فایل‌های لوگو (۲۶ فایل SVG): `public/brand/`
-- نشان درون‌خطی (با `currentColor`): `src/components/Logo.tsx`
-- فاوآیکون: `public/favicon.svg` (سازگار با تم روشن/تاریک)
-- فونت‌ها self-hosted: Dana (فارسی)، Sora (لاتین)، Instrument Serif.
+- Logos in every form and colour: `public/brand/`
+- Browser icons: `public/favicon.svg` and the icon files next to it
+- Fonts: Dana for Persian, Sora for English
 
-## ساختار کد
-
-- `src/components/`: بخش‌های صفحه (Hero، Marquee، About، Work، Projects، Contact، Footer) و ابزارهای انیمیشن (`motion.tsx`)
-- `src/lib/`: زبان و جهت (`lang.tsx`, `langContext.ts`)، اسکرول نرم (`smooth.ts`)
-
-## نکات
-
-- با `prefers-reduced-motion` اسکرول نرم، پیش‌لودر و افکت‌ها ساده یا غیرفعال می‌شوند.
-- افکت‌های وابسته به ماوس (magnetic، spotlight) فقط روی ماوس فعال‌اند.
-
-## سئو و پیش‌رندر
-
-- `npm run build` سه کار می‌کند: `vite build` (کلاینت)، `vite build --ssr` (ورودی سرور `src/entry-server.ts`) و `scripts/prerender.mjs` که با `renderToString` دو صفحه‌ی HTML کامل می‌نویسد، همراه با `sitemap.xml` و `robots.txt`. نیازی به مرورگر یا Playwright نیست و روی Vercel کار می‌کند.
-- دو نشانی: فارسی `/` (`lang="fa" dir="rtl"`) و انگلیسی `/en/` (`lang="en" dir="ltr"`). زبان از روی نشانی تعیین می‌شود و دکمه‌ی زبان بین این دو جابه‌جا می‌شود.
-- آدرس سایت فقط از یک‌جا خوانده می‌شود: متغیر محیطی `VITE_SITE_URL` (پیش‌فرض `https://faravandtech.ir`). همه‌ی canonical، hreflang، OG، JSON-LD و sitemap از آن ساخته می‌شوند.
-- عنوان و توضیح هر زبان: `site.seo` در `src/content/site.ts`. تگ‌های head: `src/seo.ts`.
-- `sameAs` در JSON-LD عمداً خالی است چون لینک‌های اجتماعی placeholder هستند؛ بعد از ساخت حساب‌های واقعی به `src/seo.ts` اضافه کنید.
-- فونت فارسی Dana از `public/fonts/dana/` (self-hosted).
+The source of the logos and the rest of the brand kit is the `faravand-brand` repository.
