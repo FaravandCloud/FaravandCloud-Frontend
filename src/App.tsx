@@ -7,6 +7,7 @@ import { Marquee } from './components/Marquee'
 import { Nav } from './components/Nav'
 import { Preloader } from './components/Preloader'
 import { Projects } from './components/Projects'
+import { Team } from './components/Team'
 import { Work } from './components/Work'
 import { site } from './content/site'
 import { useLang } from './lib/langContext'
@@ -76,6 +77,7 @@ export default function App() {
         <About />
         <Work />
         <Projects />
+        <Team />
         <Contact />
       </main>
       <Footer />

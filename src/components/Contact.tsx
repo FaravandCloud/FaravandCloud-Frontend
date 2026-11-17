@@ -27,7 +27,7 @@ export function Contact() {
         <circle cx="180" cy="180" r="48" fill="#fff" fillOpacity="0.6" />
       </motion.svg>
       <div className="wrap">
-        <SectionLabel index={4} label={t(c.label)} />
+        <SectionLabel index={5} label={t(c.label)} />
         <h2 className="mt-8 text-[clamp(2.5rem,5.5vw,5rem)] leading-[1.2] font-extrabold tracking-[-0.025em]">
           <Lines key={lang} lines={c.lines[lang]} inView lineClass={['', 'muted-line']} />
         </h2>

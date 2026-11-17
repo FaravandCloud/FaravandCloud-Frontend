@@ -31,6 +31,8 @@ export function jsonLd(lang: Lang) {
         name: site.founder.en,
         alternateName: site.founder.fa,
         jobTitle: lang === 'fa' ? 'بنیان‌گذار' : 'Founder',
+        image: `${SITE_URL}${site.team.members[0].photo}`,
+        sameAs: site.team.members[0].links.map((l) => l.href),
       },
     },
     {
