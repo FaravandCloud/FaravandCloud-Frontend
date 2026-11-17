@@ -16,7 +16,7 @@ function LangToggle() {
       hrefLang={target}
       onClick={(e) => (e.preventDefault(), setLang(target))}
       aria-label={t(site.ui.langLabel)}
-      className="relative grid h-9 min-w-9 place-items-center overflow-hidden rounded-full px-3 text-[0.8125rem] font-semibold shadow-[inset_0_0_0_1px_rgb(255_255_255/0.4)] transition-colors hover:bg-white hover:text-ink"
+      className="relative grid h-9 min-w-9 place-items-center overflow-hidden rounded-full px-3 text-[0.8125rem] font-semibold ring-1 ring-current/40 ring-inset transition-colors hover:bg-white hover:text-ink"
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
@@ -38,10 +38,12 @@ export function Nav({ ready }: { ready: boolean }) {
   const { t } = useLang()
   const [hidden, setHidden] = useState(false)
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, 'change', (y) => {
     const prev = scrollY.getPrevious() ?? 0
+    setScrolled(y > 24)
     if (open) return
     if (y > prev && y > 160) setHidden(true)
     else if (y < prev - 2 || y < 80) setHidden(false)
@@ -67,7 +69,13 @@ export function Nav({ ready }: { ready: boolean }) {
   return (
     <>
       <motion.header
-        className="fixed inset-x-0 top-0 z-[120] text-white mix-blend-difference"
+        className={`fixed inset-x-0 top-0 z-[120] transition-[background-color,box-shadow,color] duration-300 ${
+          open
+            ? 'text-ink'
+            : scrolled
+              ? 'bg-ink/80 text-white shadow-[inset_0_-1px_0_var(--color-line)] backdrop-blur-md'
+              : 'text-white'
+        }`}
         initial={{ y: '-100%' }}
         animate={{ y: ready && !hidden ? 0 : '-100%' }}
         transition={{ duration: 0.45, ease: EASE }}
@@ -101,8 +109,8 @@ export function Nav({ ready }: { ready: boolean }) {
               onClick={() => setOpen((o) => !o)}
             >
               <span className="relative block h-2.5 w-6" aria-hidden="true">
-                <span className={`absolute inset-x-0 h-px bg-white transition-all duration-300 ${open ? 'top-1/2 rotate-45' : 'top-0'}`} />
-                <span className={`absolute inset-x-0 h-px bg-white transition-all duration-300 ${open ? 'top-1/2 -rotate-45' : 'bottom-0'}`} />
+                <span className={`absolute inset-x-0 h-px bg-current transition-all duration-300 ${open ? 'top-1/2 rotate-45' : 'top-0'}`} />
+                <span className={`absolute inset-x-0 h-px bg-current transition-all duration-300 ${open ? 'top-1/2 -rotate-45' : 'bottom-0'}`} />
               </span>
             </button>
           </div>

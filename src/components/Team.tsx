@@ -5,7 +5,7 @@ import { EASE, VIEW } from '../lib/ease'
 import { useLang } from '../lib/langContext'
 import { useReduced } from '../lib/useReduced'
 import { SectionLabel } from './About'
-import { Lines, Reveal, Rule } from './motion'
+import { Lines, Reveal } from './motion'
 
 function Portrait({ m }: { m: Member }) {
   const { t, n } = useLang()
@@ -58,15 +58,14 @@ function Portrait({ m }: { m: Member }) {
 }
 
 function MemberBlock({ m }: { m: Member }) {
-  const { t, lang, n } = useLang()
-  const tm = site.team
+  const { t, lang } = useLang()
   return (
     <article className="grid gap-10 lg:grid-cols-12 lg:gap-8">
-      <div className="mx-auto w-full max-w-[22rem] lg:sticky lg:top-24 lg:col-span-4 lg:mx-0 lg:max-w-none lg:self-start">
+      <div className="mx-auto w-full max-w-[22rem] lg:col-span-4 lg:mx-0 lg:max-w-none">
         <Portrait m={m} />
       </div>
 
-      <div className="lg:col-span-7 lg:col-start-6">
+      <div className="lg:col-span-7 lg:col-start-6 lg:self-center">
         <Reveal>
           <p className="label text-mute">{t(m.role)}</p>
         </Reveal>
@@ -88,57 +87,6 @@ function MemberBlock({ m }: { m: Member }) {
             ))}
           </ul>
         </Reveal>
-
-        <div className="mt-12">
-          <Reveal><p className="label text-mute">{t(tm.focusTitle)}</p></Reveal>
-          <ul className="mt-4 grid gap-x-8 gap-y-6 sm:grid-cols-3">
-            {m.focus.map((f, i) => (
-              <li key={i}>
-                <Rule delay={i * 0.08} />
-                <Reveal delay={0.05 + i * 0.08} className="pt-4">
-                  <span className="label digits text-mute">{n(String(i + 1).padStart(2, '0'))}</span>
-                  <h4 className="mt-2 text-base leading-snug font-bold">{t(f.title)}</h4>
-                  <p className="mt-2 text-sm leading-[1.9] text-mute">{t(f.body)}</p>
-                </Reveal>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-12">
-          <Reveal><p className="label text-mute">{t(tm.openSourceTitle)}</p></Reveal>
-          <ul className="mt-4">
-            <Rule />
-            {m.openSource.map((o) => (
-              <li key={o.name} className="relative">
-                <a href={o.href} target="_blank" rel="noopener noreferrer" className="group block">
-                  <Reveal className="grid items-baseline gap-x-8 gap-y-1 py-5 sm:grid-cols-12">
-                    <span className="row-title display flex items-center gap-3 text-lg font-semibold sm:col-span-4">
-                      <bdi dir="ltr">{o.name}</bdi>
-                      <span className="arrow arrow-dir text-sm" aria-hidden="true">↗</span>
-                    </span>
-                    <span className="text-sm leading-[1.9] text-mute sm:col-span-8">{t(o.body)}</span>
-                  </Reveal>
-                  <span className="absolute inset-x-0 bottom-0 h-px bg-line" aria-hidden="true" />
-                  <span className="row-line absolute inset-x-0 bottom-0 h-px bg-paper" aria-hidden="true" />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-10">
-          <Reveal><p className="label text-mute">{t(tm.toolsTitle)}</p></Reveal>
-          <Reveal delay={0.06}>
-            <ul className="mt-4 flex flex-wrap gap-2" dir="ltr">
-              {m.tools.map((tool) => (
-                <li key={tool} className="display rounded-full px-3.5 py-1 text-xs shadow-[inset_0_0_0_1px_rgb(255_255_255/0.22)] transition-colors duration-300 hover:bg-paper hover:text-ink">
-                  {tool}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
       </div>
     </article>
   )

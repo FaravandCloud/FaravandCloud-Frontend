@@ -36,9 +36,6 @@ export interface Member {
   motto: L<string>
   photo: string
   handle: string
-  focus: { title: L<string>; body: L<string> }[]
-  openSource: { name: string; href: string; body: L<string> }[]
-  tools: string[]
   links: SocialLink[]
 }
 
@@ -242,17 +239,14 @@ export const site = {
   team: {
     label: { fa: 'تیم', en: 'Team' },
     title: { fa: ['تیم', 'فراوند'], en: ['The', 'team'] } satisfies L<string[]>,
-    focusTitle: { fa: 'تمرکز', en: 'Focus' },
-    openSourceTitle: { fa: 'متن‌باز', en: 'Open source' },
-    toolsTitle: { fa: 'ابزارها', en: 'Toolbox' },
     members: [
       {
         id: 'ali-moradi',
         name: { fa: 'علی مرادی', en: 'Ali Moradi' },
         role: { fa: 'بنیان‌گذار و مهندس نرم‌افزار', en: 'Founder & Software Engineer' },
         bio: {
-          fa: 'علی مهندس نرم‌افزار بک‌اند و بنیان‌گذار فراوند است. روی سیستم‌های توزیع‌شده و رویدادمحور کار می‌کند؛ سیستم‌هایی که زیر بار آرام می‌مانند و رفتارشان قابل پیش‌بینی است. طراحی و مهندسی تروفلو با اوست.',
-          en: 'Ali is a backend software engineer and the founder of Faravand. He works on distributed, event-driven systems that stay calm under load and behave predictably, and leads the design and engineering of TrueFlow.',
+          fa: 'علی بنیان‌گذار فراوند و مهندس نرم‌افزار است. طراحی و مهندسی تروفلو با اوست.',
+          en: 'Ali is the founder of Faravand and a software engineer. He leads the design and engineering of TrueFlow.',
         },
         motto: {
           fa: 'کد ساده و قابل پیش‌بینی، مطمئن‌ترین کد در روزهای سخت است.',
@@ -260,48 +254,6 @@ export const site = {
         },
         photo: '/team/ali-moradi.png',
         handle: '@ali127dev',
-        focus: [
-          {
-            title: { fa: 'سیستم‌های توزیع‌شده', en: 'Distributed systems' },
-            body: {
-              fa: 'سرویس‌های رویدادمحور با مرزهای روشن و تحویلی که با ری‌استارت و قطعی شبکه هم پابرجا می‌ماند.',
-              en: 'Event-driven services, clean boundaries, and delivery guarantees that hold through restarts and partitions.',
-            },
-          },
-          {
-            title: { fa: 'داده و کارایی', en: 'Data & performance' },
-            body: {
-              fa: 'ساختار داده، ایندکس و کوئری‌هایی که از الگوی واقعی استفاده شکل می‌گیرند، نه از حدس.',
-              en: 'Schemas, indexes and queries shaped by real access patterns, not guesses.',
-            },
-          },
-          {
-            title: { fa: 'پایداری و مشاهده‌پذیری', en: 'Reliability & observability' },
-            body: {
-              fa: 'متریک، تریس و لاگ‌هایی که پیش از پرسیدن، جواب را نشان می‌دهند.',
-              en: 'Metrics, traces and logs that answer the question before someone has to ask it.',
-            },
-          },
-        ],
-        openSource: [
-          {
-            name: 'xoutbox',
-            href: 'https://github.com/Ali127Dev/xoutbox',
-            body: {
-              fa: 'الگوی Transactional Outbox برای Go؛ وضعیت و رویداد در یک تراکنش ثبت می‌شوند و از راه Kafka، NATS یا RabbitMQ تحویل داده می‌شوند.',
-              en: 'Transactional outbox for Go: state and events are written in one transaction and delivered through Kafka, NATS or RabbitMQ.',
-            },
-          },
-          {
-            name: 'xerr',
-            href: 'https://github.com/Ali127Dev/xerr',
-            body: {
-              fa: 'مدیریت خطای ساخت‌یافته برای Go؛ خطاهایی با نوع و زمینه‌ی مشخص که در لاگ و تریس خوانا می‌مانند.',
-              en: 'Structured error handling for Go: typed, contextual errors that stay readable in logs and traces.',
-            },
-          },
-        ],
-        tools: ['Go', 'TypeScript', 'Rust', 'PostgreSQL', 'Redis', 'Kafka', 'NATS', 'Kubernetes', 'OpenTelemetry'],
         links: [
           { label: 'GitHub', href: 'https://github.com/Ali127Dev' },
           { label: 'LinkedIn', href: 'https://www.linkedin.com/in/ali127dev' },
