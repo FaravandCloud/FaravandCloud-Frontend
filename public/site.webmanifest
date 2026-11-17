@@ -1,0 +1,15 @@
+{
+  "name": "فراوند | Faravand",
+  "short_name": "فراوند",
+  "description": "پردازش هوشمند فراوند: محصولات نرم‌افزاری هوشمند برای سازمان‌ها",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0A0A0A",
+  "theme_color": "#0A0A0A",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
