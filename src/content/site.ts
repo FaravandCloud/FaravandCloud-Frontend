@@ -2,8 +2,8 @@
  * All site content lives here: copy (fa + en), links and contact details.
  * Components only render what is defined in this file.
  *
- * The domain is final (faravandtech.ir). The `email` mailbox and the social
- * accounts under `handle` still have to be created; change them here only.
+ * Contact is by phone and WhatsApp (same number). The social accounts under
+ * `handle` are defined here only.
  *
  * To add a project, add one more object to `projects.items`: the layout adapts.
  */
@@ -36,11 +36,16 @@ export interface SocialLink {
 const handle = 'faravandtech'
 
 export const site = {
-  // ---- Contact (email + social accounts not created yet) -------------------
+  // ---- Contact -----------------------------------------------------------
   domain: 'faravandtech.ir',
-  email: 'info@faravandtech.ir',
+  phone: {
+    tel: '+989915542528',
+    display: { fa: '۰۹۹۱ ۵۵۴ ۲۵۲۸', en: '+98 991 554 2528' } satisfies L<string>,
+    whatsapp: 'https://wa.me/989915542528',
+  },
   handle,
   social: [
+    { label: 'Instagram', href: `https://www.instagram.com/${handle}` },
     { label: 'LinkedIn', href: `https://www.linkedin.com/company/${handle}` },
     { label: 'X', href: `https://x.com/${handle}` },
     { label: 'YouTube', href: `https://www.youtube.com/@${handle}` },
@@ -74,8 +79,6 @@ export const site = {
     scroll: { fa: 'اسکرول', en: 'Scroll' },
     langLabel: { fa: 'تغییر زبان به انگلیسی', en: 'Switch language to Persian' },
     langShort: { fa: 'EN', en: 'فا' },
-    copy: { fa: 'کپی ایمیل', en: 'Copy email' },
-    copied: { fa: 'کپی شد', en: 'Copied' },
     visit: { fa: 'بازدید از', en: 'Visit' },
     loading: { fa: 'در حال بارگذاری', en: 'Loading' },
     marqueeLabel: { fa: 'حوزه‌های کار فراوند', en: 'Areas of work at Faravand' },
@@ -223,10 +226,12 @@ export const site = {
     label: { fa: 'تماس', en: 'Contact' },
     lines: { fa: ['بیایید', 'گفتگو کنیم.'], en: ["Let's", 'talk.'] } satisfies L<string[]>,
     body: {
-      fa: 'برای همکاری، پرسش درباره‌ی تروفلو یا هر گفتگوی دیگر، یک ایمیل کافی است.',
-      en: 'For collaboration, questions about TrueFlow, or any other conversation, an email is enough.',
+      fa: 'برای همکاری، پرسش درباره‌ی تروفلو یا هر گفتگوی دیگر، تماس بگیرید یا در واتساپ پیام بدهید.',
+      en: 'For collaboration, questions about TrueFlow, or any other conversation, call us or send a message on WhatsApp.',
     } satisfies L<string>,
-    button: { fa: 'ایمیل بزنید', en: 'Write to us' },
+    button: { fa: 'پیام در واتساپ', en: 'Message on WhatsApp' },
+    call: { fa: 'تماس تلفنی', en: 'Call us' },
+    whatsapp: { fa: 'واتساپ', en: 'WhatsApp' },
     followTitle: { fa: 'دنبال کنید', en: 'Follow' },
   },
 

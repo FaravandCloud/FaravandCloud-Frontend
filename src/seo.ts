@@ -16,6 +16,7 @@ export function jsonLd(lang: Lang) {
       url: urlFor(lang),
       logo: `${SITE_URL}/icons/icon-512.png`,
       description: site.seo.description[lang],
+      telephone: site.phone.tel,
       founder: {
         '@type': 'Person',
         name: site.founder.en,

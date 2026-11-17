@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'motion/react'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { site } from '../content/site'
 import { useLang } from '../lib/langContext'
 import { useReduced } from '../lib/useReduced'
@@ -11,20 +11,9 @@ export function Contact() {
   const { t, lang } = useLang()
   const reduced = useReduced()
   const ref = useRef<HTMLElement>(null)
-  const [copied, setCopied] = useState(false)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end end'] })
   const y = useTransform(scrollYProgress, [0, 1], [-30, 20])
   const c = site.contact
-
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(site.email)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 1600)
-    } catch {
-      /* clipboard unavailable: the mailto link still works */
-    }
-  }
 
   return (
     <section ref={ref} id="contact" className="relative isolate overflow-hidden py-[var(--section)]">
@@ -48,23 +37,23 @@ export function Contact() {
             <p className="max-w-[28rem] text-base leading-[2] text-mute">{t(c.body)}</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Magnetic strength={0.14}>
-                <a href={`mailto:${site.email}`} className="btn btn-solid cut">
+                <a href={site.phone.whatsapp} target="_blank" rel="noopener noreferrer" className="btn btn-solid cut">
                   {t(c.button)}
                   <span className="arrow arrow-dir" aria-hidden="true">↗</span>
                 </a>
               </Magnetic>
-              <button type="button" onClick={copy} className="btn btn-ghost cut" aria-live="polite">
-                {copied ? t(site.ui.copied) : t(site.ui.copy)}
-              </button>
+              <a href={`tel:${site.phone.tel}`} className="btn btn-ghost cut">
+                {t(c.call)}
+              </a>
             </div>
           </Reveal>
           <Reveal className="lg:col-span-6 lg:col-start-7" delay={0.08}>
             <a
-              href={`mailto:${site.email}`}
-              className="display block text-[clamp(1.25rem,2.6vw,2.25rem)] leading-[1.3] font-medium tracking-[-0.02em] break-all"
+              href={`tel:${site.phone.tel}`}
+              className="display block text-[clamp(1.25rem,2.6vw,2.25rem)] leading-[1.3] font-medium tracking-[-0.02em]"
               style={{ unicodeBidi: 'isolate' }}
             >
-              <span className="u-sweep u-line" style={{ paddingBottom: '0.12em' }}>{site.email}</span>
+              <span dir="ltr" className="u-sweep u-line inline-block" style={{ paddingBottom: '0.12em' }}>{t(site.phone.display)}</span>
             </a>
             <Rule className="mt-8" />
             <p className="label mt-5 text-mute">{t(c.followTitle)}</p>

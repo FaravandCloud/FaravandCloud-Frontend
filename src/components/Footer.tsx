@@ -46,7 +46,8 @@ export function Footer() {
           <div className="lg:col-span-2">
             <p className="label text-mute">{t(site.contact.label)}</p>
             <ul className="mt-3 grid gap-1.5 text-[0.9375rem]">
-              <li><a href={`mailto:${site.email}`} className="u-sweep display" style={{ unicodeBidi: 'isolate' }}>{site.email}</a></li>
+              <li><a href={`tel:${site.phone.tel}`} dir="ltr" className="u-sweep display" style={{ unicodeBidi: 'isolate' }}>{t(site.phone.display)}</a></li>
+              <li><a href={site.phone.whatsapp} target="_blank" rel="noopener noreferrer" className="u-sweep">{t(site.contact.whatsapp)}</a></li>
               {site.social.map((s) => (
                 <li key={s.label}><a href={s.href} target="_blank" rel="noopener noreferrer" className="u-sweep display">{s.label}</a></li>
               ))}
