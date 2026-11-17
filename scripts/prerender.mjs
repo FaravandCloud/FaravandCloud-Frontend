@@ -41,5 +41,21 @@ await writeFile(
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urlEntry('fa')}\n${urlEntry('en')}\n</urlset>\n`,
 )
 await writeFile(path.join(dist, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`)
+await writeFile(
+  path.join(dist, 'llms.txt'),
+  `# Faravand Intelligent Processing (پردازش هوشمند فراوند)
+
+> Faravand Intelligent Processing is a software company based in Iran. It builds intelligent software products for organizations. Its first product is TrueFlow, a performance management platform in Persian.
+
+## Pages
+
+- [Home (Persian)](${urlFor('fa')}): The company, what it works on, its products and how to get in touch.
+- [Home (English)](${urlFor('en')}): The same page in English.
+
+## Products
+
+- [TrueFlow](https://trueflow.ir): Performance management platform that connects goals, daily tasks, feedback, evaluations and analytics.
+`,
+)
 await rm(ssrDir, { recursive: true, force: true })
 console.log(`prerendered ${pages.length} pages for ${SITE_URL}`)

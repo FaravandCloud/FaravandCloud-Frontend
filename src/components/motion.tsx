@@ -84,6 +84,8 @@ export function Lines({
           >
             {line}
           </motion.span>
+          {/* keeps the words apart when the heading is read as plain text */}
+          {i < lines.length - 1 ? ' ' : null}
         </span>
       ))}
     </motion.span>

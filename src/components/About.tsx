@@ -20,7 +20,7 @@ export function SectionLabel({ index, label, dark = true, as: Tag = 'div' }: { i
     <Tag className={`label m-0 flex items-center gap-4 ${dark ? 'text-mute' : 'text-mute-ink'}`}>
       <motion.span className="digits" {...slide} transition={{ duration: reduced ? 0 : 0.6, ease: EASE }}>
         {n(String(index).padStart(2, '0'))}
-      </motion.span>
+      </motion.span>{' '}
       <Rule dark={dark} className="w-10 sm:w-14" delay={0.1} />
       <motion.span {...slide} transition={{ duration: reduced ? 0 : 0.6, ease: EASE, delay: 0.08 }}>
         {label}

@@ -1,4 +1,4 @@
-import { urlFor, SITE_URL } from './content/config'
+import { BING_SITE_VERIFICATION, GOOGLE_SITE_VERIFICATION, SITE_URL, urlFor } from './content/config'
 import { site, type Lang } from './content/site'
 
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
@@ -14,9 +14,18 @@ export function jsonLd(lang: Lang) {
       legalName: site.legalName.fa,
       alternateName: lang === 'fa' ? [site.brand.fa, site.legalName.en, site.brand.en] : [site.legalName.fa, site.brand.en, site.brand.fa],
       url: urlFor(lang),
-      logo: `${SITE_URL}/icons/icon-512.png`,
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/icons/icon-512.png`, width: 512, height: 512 },
+      image: `${SITE_URL}/og.png`,
       description: site.seo.description[lang],
       telephone: site.phone.tel,
+      address: { '@type': 'PostalAddress', addressCountry: 'IR' },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: site.phone.tel,
+        contactType: 'customer service',
+        availableLanguage: ['fa', 'en'],
+      },
+      sameAs: site.sameAs,
       founder: {
         '@type': 'Person',
         name: site.founder.en,
@@ -34,6 +43,18 @@ export function jsonLd(lang: Lang) {
       inLanguage: lang,
       publisher: { '@id': org },
     },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      '@id': `${urlFor(lang)}#webpage`,
+      url: urlFor(lang),
+      name: site.seo.title[lang],
+      description: site.seo.description[lang],
+      inLanguage: lang,
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      about: { '@id': org },
+      primaryImageOfPage: `${SITE_URL}/og.png`,
+    },
   ]
 }
 
@@ -44,10 +65,14 @@ export function buildHead(lang: Lang): string {
   const url = urlFor(lang)
   const other: Lang = lang === 'fa' ? 'en' : 'fa'
   const image = `${SITE_URL}/og.png`
+  const imageAlt = `${esc(site.legalName[lang])}: ${esc(lang === 'fa' ? 'فراتر از پردازش' : 'Beyond processing')}`
   const tags = [
     `<title>${title}</title>`,
     `<meta name="description" content="${desc}" />`,
-    `<meta name="robots" content="index, follow, max-image-preview:large" />`,
+    `<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />`,
+    `<meta name="author" content="${esc(site.legalName[lang])}" />`,
+    ...(GOOGLE_SITE_VERIFICATION ? [`<meta name="google-site-verification" content="${esc(GOOGLE_SITE_VERIFICATION)}" />`] : []),
+    ...(BING_SITE_VERIFICATION ? [`<meta name="msvalidate.01" content="${esc(BING_SITE_VERIFICATION)}" />`] : []),
     `<link rel="canonical" href="${url}" />`,
     `<link rel="alternate" hreflang="fa" href="${urlFor('fa')}" />`,
     `<link rel="alternate" hreflang="en" href="${urlFor('en')}" />`,
@@ -58,15 +83,17 @@ export function buildHead(lang: Lang): string {
     `<meta property="og:description" content="${desc}" />`,
     `<meta property="og:url" content="${url}" />`,
     `<meta property="og:image" content="${image}" />`,
+    `<meta property="og:image:type" content="image/png" />`,
     `<meta property="og:image:width" content="1200" />`,
     `<meta property="og:image:height" content="630" />`,
-    `<meta property="og:image:alt" content="${esc(site.brand[lang])}: ${esc(lang === 'fa' ? 'فراتر از پردازش' : 'Beyond processing')}" />`,
+    `<meta property="og:image:alt" content="${imageAlt}" />`,
     `<meta property="og:locale" content="${site.seo.ogLocale[lang]}" />`,
     `<meta property="og:locale:alternate" content="${site.seo.ogLocale[other]}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${title}" />`,
     `<meta name="twitter:description" content="${desc}" />`,
     `<meta name="twitter:image" content="${image}" />`,
+    `<meta name="twitter:image:alt" content="${imageAlt}" />`,
     ...(lang === 'fa'
       ? [
           `<link rel="preload" href="/fonts/dana/DanaFaNum-Medium.woff2" as="font" type="font/woff2" crossorigin />`,

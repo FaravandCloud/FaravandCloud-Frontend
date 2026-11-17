@@ -50,6 +50,8 @@ export const site = {
     { label: 'X', href: `https://x.com/${handle}` },
     { label: 'YouTube', href: `https://www.youtube.com/@${handle}` },
   ] satisfies SocialLink[],
+  /** Official profiles told to search engines. Add each one once the account exists. */
+  sameAs: [`https://github.com/${handle}`, `https://www.instagram.com/${handle}`],
   // -------------------------------------------------------------------------
 
   founder: { fa: 'علی مرادی', en: 'Ali Moradi' } satisfies L<string>,

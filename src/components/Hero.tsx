@@ -69,7 +69,7 @@ export function Hero({ ready }: { ready: boolean }) {
         </motion.p>
 
         <h1 className="text-[clamp(2.75rem,7vw,6.5rem)] leading-[1.15] font-extrabold tracking-[-0.025em]">
-          <span className="sr-only">{t(site.brand)}: </span>
+          <span className="sr-only">{t(site.legalName)}: </span>
           <Lines key={lang} lines={site.hero.lines[lang]} go={ready} lineClass={['', 'muted-line']} />
         </h1>
 
