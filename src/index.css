@@ -213,3 +213,8 @@ html { scrollbar-width: thin; scrollbar-color: #3a3a3a var(--color-ink); }
 ::-webkit-scrollbar-thumb { background: #2e2e2e; border-radius: 9999px; border: 2px solid var(--color-ink); }
 ::-webkit-scrollbar-thumb:hover { background: #5a5a5a; }
 ::-webkit-scrollbar-corner { background: var(--color-ink); }
+
+/* Failsafe: the prerendered preloader covers the page until JS hydrates. On a slow
+   connection that can take a long time, so it dismisses itself via CSS after 3s. */
+@keyframes preloader-failsafe { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+#preloader { animation: preloader-failsafe 0.35s 3s forwards; }
