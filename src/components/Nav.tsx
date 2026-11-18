@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react'
+import { AnimatePresence, m as motion, useMotionValueEvent, useScroll } from 'motion/react'
 import { useEffect, useState } from 'react'
 import { site } from '../content/site'
 import { EASE } from '../lib/ease'
@@ -15,7 +15,7 @@ function LangToggle() {
       href={target === 'en' ? '/en/' : '/'}
       hrefLang={target}
       onClick={(e) => (e.preventDefault(), setLang(target))}
-      aria-label={t(site.ui.langLabel)}
+      aria-label={`${t(site.ui.langShort)} · ${t(site.ui.langLabel)}`}
       className="relative grid h-9 min-w-9 place-items-center overflow-hidden rounded-full px-3 text-[0.8125rem] font-semibold ring-1 ring-current/40 ring-inset transition-colors hover:bg-white hover:text-ink"
     >
       <AnimatePresence mode="wait" initial={false}>

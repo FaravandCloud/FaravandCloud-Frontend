@@ -22,6 +22,14 @@ export function DotField({ className = '' }: { className?: string }) {
     let dpr = 1
     let raf = 0
     let visible = true
+    // pre-rendered dot: one drawImage per dot instead of path + fill
+    const sprite = document.createElement('canvas')
+    sprite.width = sprite.height = 64
+    const sc = sprite.getContext('2d')!
+    sc.fillStyle = '#fff'
+    sc.beginPath()
+    sc.arc(32, 32, 31, 0, Math.PI * 2)
+    sc.fill()
     const mouse = { x: -9999, y: -9999, px: -9999, py: -9999 }
 
     const resize = () => {
@@ -67,10 +75,8 @@ export function DotField({ className = '' }: { className?: string }) {
             }
           }
           ctx!.globalAlpha = Math.max(0.04, Math.min(1, a))
-          ctx!.beginPath()
-          ctx!.arc(x, y, Math.max(0.5, r), 0, Math.PI * 2)
-          ctx!.fillStyle = '#fff'
-          ctx!.fill()
+          const rr = Math.max(0.5, r)
+          ctx!.drawImage(sprite, x - rr, y - rr, rr * 2, rr * 2)
         }
       }
     }

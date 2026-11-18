@@ -1,5 +1,5 @@
-import { motion, useAnimationFrame, useMotionValue, useScroll, useSpring, useVelocity } from 'motion/react'
-import { useRef } from 'react'
+import { m as motion, useAnimationFrame, useMotionValue, useScroll, useSpring, useVelocity } from 'motion/react'
+import { useEffect, useRef } from 'react'
 import { site } from '../content/site'
 import { useLang } from '../lib/langContext'
 import { useReduced } from '../lib/useReduced'
@@ -15,8 +15,18 @@ export function Marquee() {
   const dir = useSpring(1, { stiffness: 40, damping: 20 })
   const words = site.marquee.words[lang]
 
+  const visible = useRef(true)
+  const section = useRef<HTMLElement>(null)
+  useEffect(() => {
+    const el = section.current
+    if (!el) return
+    const io = new IntersectionObserver(([e]) => (visible.current = e.isIntersecting))
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
   useAnimationFrame((_, delta) => {
-    if (reduced || !track.current) return
+    if (reduced || !visible.current || !track.current) return
     const half = track.current.scrollWidth / 2
     if (!half) return
     const v = vel.get()
@@ -39,7 +49,7 @@ export function Marquee() {
   )
 
   return (
-    <section aria-label={t(site.ui.marqueeLabel)} className="relative z-10 overflow-hidden bg-paper py-1 text-ink" dir="ltr">
+    <section ref={section} aria-label={t(site.ui.marqueeLabel)} className="relative z-10 overflow-hidden bg-paper py-1 text-ink" dir="ltr">
       <motion.div ref={track} className="flex w-max" style={{ x }}>
         {row('a')}
         {row('b', true)}

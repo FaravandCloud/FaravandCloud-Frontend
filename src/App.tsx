@@ -1,3 +1,4 @@
+import { LazyMotion } from 'motion/react'
 import { useCallback, useEffect, useState, useSyncExternalStore } from 'react'
 import { About } from './components/About'
 import { Contact } from './components/Contact'
@@ -14,6 +15,7 @@ import { useLang } from './lib/langContext'
 import { lockScroll, startSmooth, unlockScroll } from './lib/smooth'
 import { useReduced } from './lib/useReduced'
 
+const loadFeatures = () => import('./lib/features').then((m) => m.default)
 const SEEN = 'faravand-intro'
 const noop = () => () => {}
 const readSeen = () => {
@@ -64,7 +66,7 @@ export default function App() {
   }, [])
 
   return (
-    <>
+    <LazyMotion features={loadFeatures}>
       <a href="#main" className="sr-only-focus fixed start-4 top-4 z-[500] bg-paper px-4 py-2 text-ink">
         {t(site.ui.skip)}
       </a>
@@ -81,6 +83,6 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </LazyMotion>
   )
 }

@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useScroll, useSpring, useTransform, type MotionValue } from 'motion/react'
+import { m as motion, useMotionValue, useScroll, useSpring, useTransform, type MotionValue } from 'motion/react'
 import { useRef, type ReactNode } from 'react'
 import { EASE, VIEW } from '../lib/ease'
 import { useReduced } from '../lib/useReduced'

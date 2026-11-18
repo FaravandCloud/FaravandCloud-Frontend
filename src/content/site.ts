@@ -49,6 +49,7 @@ const handle = 'faravandcloud'
 export const site = {
   // ---- Contact -----------------------------------------------------------
   domain: 'faravand.cloud',
+  email: 'info@faravand.cloud',
   phone: {
     tel: '+989915542528',
     display: { fa: '۰۹۹۱ ۵۵۴ ۲۵۲۸', en: '+98 991 554 2528' } satisfies L<string>,
@@ -62,7 +63,12 @@ export const site = {
     { label: 'YouTube', href: `https://www.youtube.com/@${handle}` },
   ] satisfies SocialLink[],
   /** Official profiles told to search engines. Add each one once the account exists. */
-  sameAs: ['https://github.com/faravandtech', `https://www.instagram.com/${handle}`],
+  sameAs: ['https://github.com/faravandtech', ...[
+    `https://www.instagram.com/${handle}`,
+    `https://www.linkedin.com/company/${handle}`,
+    `https://x.com/${handle}`,
+    `https://www.youtube.com/@${handle}`,
+  ]],
   // -------------------------------------------------------------------------
 
   founder: { fa: 'علی مرادی', en: 'Ali Moradi' } satisfies L<string>,
@@ -252,7 +258,7 @@ export const site = {
           fa: 'کد ساده و قابل پیش‌بینی، مطمئن‌ترین کد در روزهای سخت است.',
           en: 'Boring code, reliable production.',
         },
-        photo: '/team/ali-moradi.png',
+        photo: '/team/ali-moradi.webp',
         handle: '@ali127dev',
         links: [
           { label: 'GitHub', href: 'https://github.com/Ali127Dev' },

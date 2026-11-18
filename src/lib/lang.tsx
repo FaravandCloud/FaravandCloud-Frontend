@@ -1,4 +1,4 @@
-import { animate } from 'motion'
+import { animate } from 'motion/mini'
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { Mark } from '../components/Logo'
 import { pathFor } from '../content/config'

@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'motion/react'
+import { m as motion, useScroll, useTransform } from 'motion/react'
 import { useRef } from 'react'
 import { site } from '../content/site'
 import { EASE, VIEW } from '../lib/ease'

@@ -18,10 +18,14 @@ export function jsonLd(lang: Lang) {
       image: `${SITE_URL}/og.png`,
       description: site.seo.description[lang],
       telephone: site.phone.tel,
+      email: site.email,
+      areaServed: 'IR',
+      knowsAbout: lang === 'fa' ? ['نرم‌افزار سازمانی', 'مدیریت عملکرد', 'هوش مصنوعی'] : ['Enterprise software', 'Performance management', 'Artificial intelligence'],
       address: { '@type': 'PostalAddress', addressCountry: 'IR' },
       contactPoint: {
         '@type': 'ContactPoint',
         telephone: site.phone.tel,
+        email: site.email,
         contactType: 'customer service',
         availableLanguage: ['fa', 'en'],
       },
@@ -57,6 +61,18 @@ export function jsonLd(lang: Lang) {
       about: { '@id': org },
       primaryImageOfPage: `${SITE_URL}/og.png`,
     },
+    ...site.projects.items.map((p) => ({
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: p.name.en,
+      alternateName: p.name.fa,
+      url: p.href,
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
+      inLanguage: 'fa',
+      description: p.description[lang],
+      publisher: { '@id': org },
+    })),
   ]
 }
 
@@ -91,6 +107,7 @@ export function buildHead(lang: Lang): string {
     `<meta property="og:image:alt" content="${imageAlt}" />`,
     `<meta property="og:locale" content="${site.seo.ogLocale[lang]}" />`,
     `<meta property="og:locale:alternate" content="${site.seo.ogLocale[other]}" />`,
+    `<meta name="twitter:site" content="@${site.handle}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${title}" />`,
     `<meta name="twitter:description" content="${desc}" />`,
@@ -102,6 +119,7 @@ export function buildHead(lang: Lang): string {
           `<link rel="preload" href="/fonts/dana/DanaFaNum-ExtraBold.woff2" as="font" type="font/woff2" crossorigin />`,
         ]
       : []),
+    `<link rel="alternate" type="text/plain" href="${SITE_URL}/llms.txt" title="llms.txt" />`,
     ...jsonLd(lang).map((d) => `<script type="application/ld+json">${JSON.stringify(d).replace(/</g, '\\u003c')}</script>`),
   ]
   return tags.join('\n    ')

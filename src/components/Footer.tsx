@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { m as motion } from 'motion/react'
 import { site } from '../content/site'
 import { EASE, VIEW } from '../lib/ease'
 import { useLang } from '../lib/langContext'

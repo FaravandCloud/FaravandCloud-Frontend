@@ -1,4 +1,4 @@
-import { motion, useMotionTemplate, useMotionValue, useScroll, useTransform } from 'motion/react'
+import { m as motion, useMotionTemplate, useMotionValue, useScroll, useTransform } from 'motion/react'
 import { useRef } from 'react'
 import { site, type Project } from '../content/site'
 import { useLang } from '../lib/langContext'
