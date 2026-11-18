@@ -2,6 +2,7 @@ import { LazyMotion } from 'motion/react'
 import { useCallback, useEffect, useState, useSyncExternalStore } from 'react'
 import { About } from './components/About'
 import { Contact } from './components/Contact'
+import { Cursor } from './components/Cursor'
 import { Footer } from './components/Footer'
 import { Hero } from './components/Hero'
 import { Marquee } from './components/Marquee'
@@ -70,6 +71,7 @@ export default function App() {
       <a href="#main" className="sr-only-focus fixed start-4 top-4 z-[500] bg-paper px-4 py-2 text-ink">
         {t(site.ui.skip)}
       </a>
+      <Cursor />
       {intro && <Preloader onLeave={onLeave} onDone={onDone} />}
       <div className="gridlines" aria-hidden="true"><div><div /></div></div>
       <Nav ready={ready} />

@@ -45,6 +45,9 @@ export function Contact() {
               <a href={`tel:${site.phone.tel}`} className="btn btn-ghost cut">
                 {t(c.call)}
               </a>
+              <a href={`mailto:${site.email}`} className="btn btn-ghost cut">
+                {t(c.email)}
+              </a>
             </div>
           </Reveal>
           <Reveal className="lg:col-span-6 lg:col-start-7" delay={0.08}>
@@ -54,6 +57,13 @@ export function Contact() {
               style={{ unicodeBidi: 'isolate' }}
             >
               <span dir="ltr" className="u-sweep u-line inline-block" style={{ paddingBottom: '0.12em' }}>{t(site.phone.display)}</span>
+            </a>
+            <a
+              href={`mailto:${site.email}`}
+              className="display mt-3 block text-[clamp(1rem,1.9vw,1.5rem)] leading-[1.3] font-medium tracking-[-0.01em] text-mute hover:text-paper"
+              style={{ unicodeBidi: 'isolate' }}
+            >
+              <span dir="ltr" className="u-sweep u-line inline-block" style={{ paddingBottom: '0.12em' }}>{site.email}</span>
             </a>
             <Rule className="mt-8" />
             <p className="label mt-5 text-mute">{t(c.followTitle)}</p>

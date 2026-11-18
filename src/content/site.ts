@@ -272,12 +272,13 @@ export const site = {
     label: { fa: 'تماس', en: 'Contact' },
     lines: { fa: ['بیایید', 'گفتگو کنیم.'], en: ["Let's", 'talk.'] } satisfies L<string[]>,
     body: {
-      fa: 'برای همکاری، پرسش درباره‌ی تروفلو یا هر گفتگوی دیگر، تماس بگیرید یا در واتساپ پیام بدهید.',
-      en: 'For collaboration, questions about TrueFlow, or any other conversation, call us or send a message on WhatsApp.',
+      fa: 'برای همکاری، پرسش درباره‌ی تروفلو یا هر گفتگوی دیگر، تماس بگیرید، ایمیل بزنید یا در واتساپ پیام بدهید.',
+      en: 'For collaboration, questions about TrueFlow, or any other conversation, call us, email us or send a message on WhatsApp.',
     } satisfies L<string>,
     button: { fa: 'پیام در واتساپ', en: 'Message on WhatsApp' },
     call: { fa: 'تماس تلفنی', en: 'Call us' },
     whatsapp: { fa: 'واتساپ', en: 'WhatsApp' },
+    email: { fa: 'ایمیل', en: 'Email' },
     followTitle: { fa: 'دنبال کنید', en: 'Follow' },
   },
 

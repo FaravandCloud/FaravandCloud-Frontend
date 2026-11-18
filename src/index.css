@@ -186,3 +186,30 @@ html:lang(fa) .muted-line, html:lang(fa) .muted-line-ink { font-weight: 400; }
 }
 
 .sr-only-focus:not(:focus) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* ---- custom cursor (mouse only; see components/Cursor.tsx) ---- */
+html.has-cursor, html.has-cursor * { cursor: none !important; }
+.cursor { position: fixed; inset: 0; z-index: 1000; pointer-events: none; mix-blend-mode: difference; }
+.cursor-pos { position: absolute; top: 0; left: 0; will-change: transform; }
+.cursor-dot, .cursor-ring {
+  position: absolute;
+  display: block;
+  border-radius: 9999px;
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.35s var(--ease-out), background-color 0.3s, border-color 0.3s, width 0.35s var(--ease-out), height 0.35s var(--ease-out), margin 0.35s var(--ease-out);
+}
+.cursor-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: #fff; }
+.cursor-ring { width: 34px; height: 34px; margin: -17px 0 0 -17px; border: 1px solid rgb(255 255 255 / 0.7); }
+html.cursor-on .cursor-dot, html.cursor-on .cursor-ring { opacity: 1; }
+html.cursor-hot .cursor-ring { width: 56px; height: 56px; margin: -28px 0 0 -28px; background: #fff; border-color: #fff; }
+html.cursor-hot .cursor-dot { transform: scale(0); }
+html.cursor-down .cursor-ring { transform: scale(0.8); }
+html.cursor-down.cursor-hot .cursor-ring { transform: scale(0.9); }
+
+/* ---- scrollbar ---- */
+html { scrollbar-width: thin; scrollbar-color: #3a3a3a var(--color-ink); }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-ink); }
+::-webkit-scrollbar-thumb { background: #2e2e2e; border-radius: 9999px; border: 2px solid var(--color-ink); }
+::-webkit-scrollbar-thumb:hover { background: #5a5a5a; }
+::-webkit-scrollbar-corner { background: var(--color-ink); }
