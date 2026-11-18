@@ -44,11 +44,11 @@ export interface SocialLink {
   href: string
 }
 
-const handle = 'faravandtech'
+const handle = 'faravandcloud'
 
 export const site = {
   // ---- Contact -----------------------------------------------------------
-  domain: 'faravandtech.ir',
+  domain: 'faravand.cloud',
   phone: {
     tel: '+989915542528',
     display: { fa: '۰۹۹۱ ۵۵۴ ۲۵۲۸', en: '+98 991 554 2528' } satisfies L<string>,
@@ -62,7 +62,7 @@ export const site = {
     { label: 'YouTube', href: `https://www.youtube.com/@${handle}` },
   ] satisfies SocialLink[],
   /** Official profiles told to search engines. Add each one once the account exists. */
-  sameAs: [`https://github.com/${handle}`, `https://www.instagram.com/${handle}`],
+  sameAs: ['https://github.com/faravandtech', `https://www.instagram.com/${handle}`],
   // -------------------------------------------------------------------------
 
   founder: { fa: 'علی مرادی', en: 'Ali Moradi' } satisfies L<string>,

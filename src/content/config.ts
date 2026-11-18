@@ -4,7 +4,7 @@
  * so www is the canonical one.
  */
 const env = (import.meta as { env?: Record<string, string | undefined> }).env
-export const SITE_URL = (env?.VITE_SITE_URL || 'https://www.faravandtech.ir').replace(/\/+$/, '')
+export const SITE_URL = (env?.VITE_SITE_URL || 'https://www.faravand.cloud').replace(/\/+$/, '')
 
 export const pathFor = (lang: 'fa' | 'en') => (lang === 'fa' ? '/' : '/en/')
 export const urlFor = (lang: 'fa' | 'en') => SITE_URL + pathFor(lang)
