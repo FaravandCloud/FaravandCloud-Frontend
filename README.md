@@ -2,8 +2,8 @@
 
 The company website of Faravand Intelligent Processing: a single landing page in Persian and English that introduces the company, what it works on, and its products.
 
-- Persian: https://www.faravand.cloud
-- English: https://www.faravand.cloud/en/
+- Persian: https://faravand.cloud
+- English: https://faravand.cloud/en/
 
 ## Run it locally
 
@@ -22,7 +22,7 @@ Connect this repository to Vercel and deploy with the default settings, then add
 
 The site publishes a sitemap at `/sitemap.xml` and a `robots.txt`, and every page carries its own title, description and share image.
 
-To register it in Google Search Console, add `faravand.cloud` as a Domain property and confirm ownership with the DNS record Google gives you, then submit `https://www.faravand.cloud/sitemap.xml` under Sitemaps. If you prefer the HTML tag method instead, set the code as `VITE_GOOGLE_SITE_VERIFICATION` in the Vercel project settings and redeploy.
+To register it in Google Search Console, add `faravand.cloud` as a Domain property and confirm ownership with the DNS record Google gives you, then submit `https://faravand.cloud/sitemap.xml` under Sitemaps. If you prefer the HTML tag method instead, set the code as `VITE_GOOGLE_SITE_VERIFICATION` in the Vercel project settings and redeploy.
 
 ## Edit the content
 
